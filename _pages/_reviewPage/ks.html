@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+KR:wght@100&display=swap');
+
+    * {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    body {
+        background-color: #ffffff;
+        margin: 0px;
+        padding: 0px;
+        height: 100vh;
+
+        background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FeHFxsI%2FbtsGwMgJ0zL%2FPC7kkK2TnQyH3ZuFrVekj1%2Fimg.png');
+        z-index: -1000;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        
+    }
+
+    .navy {
+        min-width: 1000px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+
+        font-size: 15px;
+        color: white;
+
+        margin-bottom: 50px;
+        margin-left: 50px;
+    }
+
+    .navytext {
+        cursor: pointer;
+        margin: 0px 00px 50px 5px;
+        margin-left: 50px;
+        color: rgb(138, 138, 138);
+        line-height: 22px;
+
+        margin-bottom: 25px;
+    }
+
+    .header {
+        position: fixed;
+        top: 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 100%;
+        height: 60px;
+        margin-bottom: 0px;
+        background-color: #1e1f26;
+        border-bottom: 0px solid #ffffff;
+        box-sizing: border-box;
+        z-index: 20;
+    }
+
+    .fs {
+        font-weight: bolder;
+        font-size: 50px;
+
+        font-family: "Rubik Scribble", system-ui;
+        font-weight: 400;
+        font-style: normal;
+
+        margin-left: 450px;
+        margin-bottom: 15px;
+    }
+
+
+
+    .dropdown-menu {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .dropdown {
+        margin-bottom: 25px;
+        margin-right: 50px;
+    }
+
+    .btn {
+        width: 140px;
+        border-radius: 20px;
+
+        margin: 0px 20px 0px 5px;
+    }
+
+    .subcards {
+        margin: 0 40px 0 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        z-index: -1;
+    }
+
+    .card {
+        width: 320px;
+        height: 240px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 32px;
+        border-color: #ffffff;
+        box-shadow: 10px 10px 10px 10px rgba(3, 3, 3, 0.25);
+    }
+
+    .name1 {
+        margin-top: 30px;
+        margin-left: 120px;
+        width: 200px;
+
+        font-size: 20px;
+        color: #000000;
+        font-weight: bolder;
+    }
+
+    .star1 {
+        margin-left: 120px;
+        color: rgb(255, 208, 0);
+    }
+
+    .re1 {
+        margin: 0px 30px 0px 30px;
+        font-size: 14px;
+    }
+
+    .prf>img {
+        position: absolute;
+        top: 22%;
+        left: 18%;
+        transform: translate(-50%, -50%);
+    }
+
+    .bcard {
+        width: 530px;
+        height: 660px;
+        background-color: rgb(238, 238, 238);
+        border-radius: 32px;
+        border-style: solid;
+        border-color: #cecece50;
+        border-width: thin;
+        box-shadow: 10px 10px 10px 10px rgba(3, 3, 3, 0.25);
+    }
+
+    .bprf {
+        position: absolute;
+        margin-top: -115px;
+        margin-left: 30px;
+    }
+
+    .name2 {
+        margin-top: 30px;
+        margin-left: 130px;
+        width: 200px;
+
+        font-size: 20px;
+        color: #000000;
+        font-weight: bolder;
+    }
+
+    .star2 {
+        margin-left: 130px;
+        color: rgb(255, 208, 0);
+    }
+
+    .re2 {
+        margin: 20px 30px 0px 40px;
+    }
+
+    .custom1 {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .custom2 {
+        margin-top: 250px;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sodyd1 {
+        margin: 55px 10px 0px -5px;
+
+        img {
+            margin: 0 5px 0 5px;
+        }
+    }
+
+    .ddd {
+        margin: 220px 0px 10px 35px;
+        font-weight: 1000;
+        font-size: 15px;
+    }
+
+    .map {
+        margin: 0px 0px 0px 30px;
+    }
+
+</style>
+
+
+<script type="module">
+    $("#dropdown").click(async function () {
+        $('#menu').toggle();
+    })
+
+    $("carouselExampleAutoplaying").filter(':first').addClass('active');
+</script>
+
+<body>
+    <div class="custom1">
+        <h1 class="header">
+            <div class="navy">
+                <li class="navytext"> Home </li>
+                <li class="navytext"> Map </li>
+                </ul>
+                <div class="container">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <a href="/"
+                            class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                        </a>
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-20">
+                            <h1 class="fs">' 1 0 '</h1>
+                            <link rel="preconnect" href="https://fonts.googleapis.com">
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                            <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap"
+                                rel="stylesheet">
+                        </ul>
+
+                        <div id="dropdown" class="dropdown text-end">
+                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://pbs.twimg.com/profile_images/1642267542747054081/RQPa2nki_400x400.jpg"
+                                    alt="cat" width="32" height="32" class="rounded-circle">
+                            </a>
+                            <ul id="menu" class="dropdown-menu text-small">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">찜</a></li>
+                                <li><a class="dropdown-item" href="#">공유정보</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h1>
+        <div class="custom2">
+            <div class="subcards">
+                <div class="card">
+                    <h2 class="name1">조규성</h2>
+                    <p class="star1">★★★★</p>
+                    <p class="re1">뷰가 미쳤음 ㄷㄷ 식물도 많아서 식물원 느낌도 남 ㄷㄷ</p>
+                    <div class="prf">
+                        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsRNkx%2FbtsGAfnCji7%2FZtRMXjZQPRWkok4KTr2cMK%2Fimg.png" alt="프로필사진" width="80px" height="80px">
+                    </div>
+                </div>
+            </div>
+            <div class="bcard">
+                <h2 class="name2">조규성</h2>
+                <p class="star2">★★★★</p>
+                <p class="re2">뷰가 미쳤음 ㄷㄷ 식물도 많아서 식물원 느낌도 남 ㄷㄷ</p>
+                <div class="bprf">
+                    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsRNkx%2FbtsGAfnCji7%2FZtRMXjZQPRWkok4KTr2cMK%2Fimg.png" alt="프로필사진" width="80px" height="80px">
+                    <div class="sodyd1">
+                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230619_64%2F1687161046336vAhHo_JPEG%2FIMG_1668_%25BA%25B9%25BB%25E7.jpg"
+                            width="310px" height="180px">
+                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230619_282%2F1687160938122j3LsT_JPEG%2FP20220901_091718909_1EB818FA-F314-42E4-AFF9-26614CDF5BDC_%25BA%25B9%25BB%25E7.jpg"
+                            width="145px" height="180px">
+                    </div>
+                </div>
+                <p class="ddd">주소 : 경기 남양주시 화도읍 북한강로 1146</p>
+                <div class="map">
+                    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdLgFAe%2FbtsGzgt154R%2FM8cOmbOUfnRUiGuSJXhLS1%2Fimg.png" alt="Map" width="470px" height="220px">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

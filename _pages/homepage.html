@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+KR:wght@100&display=swap');
+
+    * {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    body {
+        background-color: #ffffff;
+        margin: 0px;
+        padding: 0px;
+        height: 100vh;
+    }
+
+    a {
+        text-decoration-line: none;
+        color: black;
+    }
+
+    .navy {
+        min-width: 1000px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+
+        font-size: 15px;
+        color: white;
+
+        margin-bottom: 50px;
+        margin-left: 50px;
+    }
+
+    .navytext {
+        cursor: pointer;
+        margin: 0px 00px 50px 5px;
+        margin-left: 50px;
+        color: rgb(138, 138, 138);
+        line-height: 22px;
+
+        margin-bottom: 25px;
+    }
+
+    .header {
+        position: fixed;
+        top: 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 100%;
+        height: 60px;
+        margin-bottom: 0px;
+        background-color: #1e1f26;
+        border-bottom: 0px solid #ffffff;
+        box-sizing: border-box;
+        z-index: 20;
+    }
+
+    .fs {
+        font-weight: bolder;
+        font-size: 50px;
+
+        font-family: "Rubik Scribble", system-ui;
+        font-weight: 400;
+        font-style: normal;
+
+        margin-left: 450px;
+        margin-bottom: 15px;
+        color: rgb(138, 138, 138);
+    }
+
+    .search_group {
+        padding-left: 28px;
+        position: relative;
+    }
+
+    .search_input_box {
+        width: 500px;
+        height: 75px;
+
+        border: 2px solid black;
+    }
+
+    .search_input {
+        width: 450px;
+        height: 58px;
+
+        position: relative;
+        padding: 17px 0px;
+        margin-top: 9px;
+
+        border: 0px;
+        outline: 0px;
+    }
+
+    .shortcut_list {
+        display: flex;
+    }
+
+    li {
+        text-align: -webkit-match-parent;
+        unicode-bidi: isolate;
+
+        margin-left: 30px;
+    }
+
+    ul,
+    .shortcut_item {
+        list-style: none;
+        color: black;
+    }
+
+    form {
+        display: block;
+        unicode-bidi: isolate;
+
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .shortcut_item {
+        border: 1px solid black;
+        border-radius: 20px;
+
+        padding: 10px;
+    }
+
+    .dropdown-menu {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .dropdown {
+        margin-bottom: 25px;
+        margin-right: 50px;
+    }
+
+    .btn {
+        width: 140px;
+        border-radius: 20px;
+
+        margin: 0px 20px 0px 5px;
+    }
+
+    .subcards {
+        margin: 0 40px 0 40px;
+        display: flex;
+        flex-direction: row;
+        /* justify-content: center;
+        z-index: -1; */
+    }
+
+    .card {
+        width: 350px;
+        height: 260px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 32px;
+        border-color: #ffffff;
+        box-shadow: 10px 10px 10px 10px rgba(3, 3, 3, 0.08);
+
+    }
+
+    .name1 {
+        margin-top: 30px;
+        margin-left: 120px;
+        width: 200px;
+
+        font-size: 23px;
+        color: #000000;
+        font-weight: bolder;
+    }
+
+    .star1 {
+        margin-left: 120px;
+        color: rgb(255, 208, 0);
+    }
+
+    .re1 {
+        margin: 10px 30px 0px 30px;
+    }
+
+    .prf>img {
+        position: absolute;
+        top: 22%;
+        left: 18%;
+        transform: translate(-50%, -50%);
+    }
+
+    .bcard {
+        width: 600px;
+        height: 750px;
+        background-color: rgba(154, 154, 154, 0.088);
+        border-radius: 32px;
+        border-style: solid;
+        border-color: #cecece50;
+        border-width: thin;
+        box-shadow: 10px 10px 10px 10px rgba(3, 3, 3, 0.08);
+    }
+
+    .bprf {
+        position: absolute;
+        margin-top: -125px;
+        margin-left: 30px;
+    }
+
+    .name2 {
+        margin-top: 30px;
+        margin-left: 130px;
+        width: 200px;
+
+        font-size: 23px;
+        color: #000000;
+        font-weight: bolder;
+    }
+
+    .star2 {
+        margin-left: 130px;
+        color: rgb(255, 208, 0);
+    }
+
+    .re2 {
+        margin: 30px 30px 0px 40px;
+    }
+
+    .custom1 {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .custom2 {
+        margin-top: 250px;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sodyd1 {
+        margin: 90px 10px 0px -5px;
+
+        img {
+            margin: 0 5px 0 5px;
+        }
+    }
+
+    .ddd {
+        margin: 300px 0px 0px 35px;
+        font-weight: 1000;
+    }
+
+    .map {
+        margin: 20px 0px 0px 30px;
+    }
+
+    #footer {
+        position: fixed;
+        bottom: 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 100%;
+        height: 110px;
+        margin-bottom: 0px;
+        background-color: #1e1f26;
+        border-bottom: 0px solid #ffffff;
+        box-sizing: border-box;
+        z-index: 20;
+    }
+</style>
+
+
+<script type="module">
+    $("#dropdown").click(async function () {
+        $('#menu').toggle();
+    })
+
+    $("carouselExampleAutoplaying").filter(':first').addClass('active');
+
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // Firebase 구성 정보 설정
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyBG8F45emOLHeo6tkshUuIS22ksUE1QybQ",
+        authDomain: "fir-prac-73220.firebaseapp.com",
+        projectId: "fir-prac-73220",
+        storageBucket: "fir-prac-73220.appspot.com",
+        messagingSenderId: "865311605933",
+        appId: "1:865311605933:web:13e603b3180a6353107224",
+        measurementId: "G-FZ6MCTVD12"
+    };
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let docs = await getDocs(collection(db, "review"));
+
+    var valid = false;
+    docs.forEach(doc => {
+
+        let rows = doc.data();
+        console.log(rows);
+        let name = rows['name'];
+        let store = rows['store'];
+        let comment = rows['comment'];
+        let link = rows['link'];
+
+        let temp = `
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-name">${name}</h5>
+                    <p class="card-star">${store}</p>
+                    <p class="card-content">${comment}</p>
+                    <a href="https://${link}">링크</a>
+                </div>
+            </div>
+        </div>`;
+        $('#cardPartition').append(temp);
+        valid = true;
+    });
+
+    if (!valid) {
+        let temp = `
+            <div class = "announce">
+                리뷰가 없습니다.
+            </div>        
+            `;
+        console.log(temp);
+        $('#cardPartition').append(temp);
+    }
+
+</script>
+
+<body>
+    <div class="custom1">
+        <h1 class="header">
+            <div class="navy">
+                <ul style="list-style: none; display: flex;">
+                    <a href="#" class="navytext"> Home </li>
+                    <a href="https://kimankim0001.github.io/test/" class="navytext"> Map </li>
+                    <a href="./allReviewPage.html" class="navytext"> Review </li>
+                </ul>
+                <div class="container">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <a href="/"
+                            class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                        </a>
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-20">
+                            <h1 class="fs">' 1 0 '</h1>
+                            <link rel="preconnect" href="https://fonts.googleapis.com">
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                            <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap"
+                                rel="stylesheet">
+                        </ul>
+
+                        <div id="dropdown" class="dropdown text-end">
+                            <h6><a href="#"
+                                    style="color: rgb(138, 138, 138); cursor: pointer; text-decoration-line: none; color: rgb(138, 138, 138);">로그인</a>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h1>
+        <div id="container">
+            <div id="containerArea">
+                <div id="search_area" style="margin-bottom: 40px; display: flex; justify-content: center;">
+                    <div id="search_group">
+                        <div id="search">
+                            <form id="sform" name="search" role="search" action="https://www.search.naver.com"
+                                method="get">
+                                <div class="search_input_box">
+                                    <input name="query" type="search" placeholder="지역을 검색해주세요." maxlength="255"
+                                        aria-label="지역을 검색해주세요." class="search_input">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                    </svg>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="shortcutArea" role="navigation" aria-label="주요 서비스"
+                    style="width: 100%; float:left; display: flex; justify-content: center;">
+                    <ul class="shortcut_list" style="display: flex; margin: auto; padding: 0px;">
+                        <li class="shortcut_item">
+                            <a href="#" class="link_service">#인기있는</a>
+                        </li>
+                        <li class="shortcut_item">
+                            <a href="#" class="link_service">#떠오르는</a>
+                        </li>
+                        <li class="shortcut_item">
+                            <a href="#" class="link_service">#가성비 최고</a>
+                        </li>
+                        <li class="shortcut_item">
+                            <a href="#" class="link_service">#추천해요</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contentwrap">
+                <div style="display: block; margin-top: 200px; margin-bottom: 50px; text-align: center;">
+                    <h4><strong>
+                            <p>리뷰와 함께 나만의 카페 공유</p>
+                        </strong></h4>
+                    다른 사람이 공유한 위치가 궁금하다면 아래 더보기를 눌러주세요!
+                </div>
+                <div class="mycards">
+                    <div id="cardPartition" class="row row-cols-1 row-cols-md-4 g-4"
+                        style="cursor: pointer; margin-right: 10px;">
+
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom: 40px; display: flex; justify-content: center;">
+                <button type="button"
+                    style="margin-top: 100px; padding: 10px 20px; background-color: white; border: 2px solid black; color: black">더보기</button>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="textArea" style="color:gray; text-align: center; padding-top: 10px; display: block; height: auto;">
+                <p>[Coffee&Music] <br>minimini project</p>
+                <p>@2024 Java_5기 10조</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

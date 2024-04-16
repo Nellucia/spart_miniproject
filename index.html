@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flix</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+        
+    * {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    body {
+        background-color: #ffffff;
+    }
+
+    .lgbox {
+        background-color: #ffffff;
+        border-radius: 200px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 400px;
+        height: 400px;
+        padding: 40px;
+
+        box-shadow: 10px 10px 50px 0px rgb(175, 175, 175);
+
+        margin: 13% auto 20px auto;
+        padding: 20px 20px 0px 20px;
+
+    }
+
+    .lgbtn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        margin: 30px auto 10px auto;
+    }
+
+    .lgbtn>button {
+        margin: 0px 8px 0px 8px;
+        width: 95px;
+    }
+
+    .form-floating>input {
+        background-color: transparent;
+        font-size: 20px;
+    }
+
+    .form-floating>label {
+        margin-top: -10px;
+        color: gray;
+    }
+
+    .form-check {
+        font-size: 13px;
+        font-weight: bolder;
+        margin-top: 10px;
+        margin-right: 100px;
+    }
+    </style>
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Firebase 구성 정보 설정
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBG8F45emOLHeo6tkshUuIS22ksUE1QybQ",
+            authDomain: "fir-prac-73220.firebaseapp.com",
+            projectId: "fir-prac-73220",
+            storageBucket: "fir-prac-73220.appspot.com",
+            messagingSenderId: "865311605933",
+            appId: "1:865311605933:web:13e603b3180a6353107224",
+            measurementId: "G-FZ6MCTVD12"
+        };
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let docs = await getDocs(collection(db, "User"));
+
+        // 유저 정보 딕셔너리
+        var userInfoDict = {};
+
+        docs.forEach(doc => {
+            let row = doc.data();
+
+            let id = row['ID'];
+            let pw = row['PW'];
+            console.log(id, pw);
+            if (id in userInfoDict) {
+                alert("중복된 아이디 존재!");
+            }
+            else {
+                userInfoDict[id] = pw;
+            }
+        });
+        $('#kinamKim').click(async function () {
+            alert("페이지 이동");
+            window.location.href = "https://kimankim0001.github.io/test/";
+
+        })
+        $('#trylogin').click(async function () {
+          
+            let userid = $('#userid').val();
+            let userpw = $('#userpw').val();
+            let usercity = $('#userCity').val();
+
+             // 정규식으로 검사
+            if (userid.search(/\W|\s/g) > -1) {
+                alert('ID에 특수문자나 공백은 넣을 수 없다구요~');
+                return;
+            }
+
+           // 미리 만들어둔 유지 Dictionary에 유저 정보가 있는지 확인
+           if(userid in userInfoDict)
+           {
+                console.log('아이디 일치');
+                // 패스워드 확인
+                userpw == userInfoDict[userid] ? console.log("로그인 성공") : console.log("로그인 실패");
+                alert("로그인 성공!");
+                window.location.href="./_pages/homepage.html"
+           }
+           else
+           {
+                console.log('로그인 실패');
+           }
+        })
+
+        $('#signup').click(async function() {
+            alert("회원가입 페이지 이동");
+            window.location.href = "./_pages/Signup.html"
+        })
+
+
+    </script>
+</head>
+
+<body>
+    <div class="lgbox">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="userid" placeholder="name@example.com"
+                style="height: 40px;">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="userpw" placeholder="Password"
+                style="height: 40px;">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="lgbtn">
+            <button id="trylogin" type="button" class="btn btn-success">Login</button>
+            <button id="signup" type="button" class="btn btn-outline-success">SignUp</button>
+        </div>
+    </div>
+</body>
+
+</html>
